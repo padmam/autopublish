@@ -1,6 +1,6 @@
 {
-  "name": "module-cd",
-  "version": "1.0.0",
+  "name": "autopublish",
+  "version": "0.0.1",
   "description": "Utilities for auto-publishing NPM modules as part of a CD pipeline",
   "main": "index.js",
   "scripts": {
@@ -22,6 +22,8 @@
     "bluebird": "^3.3.5",
     "lodash": "^4.11.1",
     "npm": "^3.8.7",
-    "npm-registry-client": "^7.1.0"
+    "npm-registry-client": "^7.1.0",
+    "npmlog": "^2.0.3",
+    "semver": "^5.1.0"
   }
 }
