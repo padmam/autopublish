@@ -4,8 +4,9 @@
   "description": "Utilities for auto-publishing NPM modules as part of a CD pipeline",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -r test/init.js",
-    "test:watch": "mocha  -r test/init.js --watch"
+    "test:isolated": "mocha -r test/init.js test/isolated/",
+    "test:integrated": "mocha -r test/init.js test/integrated/",
+    "test:watch": "mocha  -r test/init.js test/isolated/ --watch"
   },
   "author": "",
   "license": "UNLICENSED",
@@ -14,5 +15,11 @@
     "babel-core": "^6.7.7",
     "chai": "^3.5.0",
     "mocha": "^2.4.5"
+  },
+  "dependencies": {
+    "bluebird": "^3.3.5",
+    "lodash": "^4.11.1",
+    "npm": "^3.8.7",
+    "npm-registry-client": "^7.1.0"
   }
 }
