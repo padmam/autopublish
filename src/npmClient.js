@@ -9,6 +9,11 @@ module.exports = function createNpmClient(regClient) {
     var url = baseRegistryUri + moduleName;
     return clientGet(url, {}).then(function (data) {
       return _.keys(data.versions);
+    }).catch(function (err) {
+      if( err.statusCode === 404 ) {
+        return Promise.reject('could not find the module: '+moduleName);
+      }
+      return Promise.reject(err);
     });
   }
 

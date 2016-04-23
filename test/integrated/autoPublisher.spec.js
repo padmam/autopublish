@@ -27,5 +27,9 @@ describe('autoPublisher', function () {
     expect(autoPublisher.couldPublish()).to.eventually.be.false;
   });
 
-  xit('missing module');
+  it('throws if the module cannot be found', function () {
+    const fakeModuleDir = createFakeModuleDir({name:'a-non-existant-module-blah-blah',version:'blah'});
+    const autoPublisher = createAutoPublisher(fakeModuleDir);
+    return expect(autoPublisher.couldPublish()).to.eventually.be.rejectedWith('could not find the module: a-non-existant-module-blah-blah');
+  });
 });
