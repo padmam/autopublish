@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+var path = require('path');
+
+var relativeModuleDir = process.argv[2] || "."
+var moduleDir = path.resolve(process.cwd(),relativeModuleDir);
+
+require('../src/cli.js')(moduleDir);
