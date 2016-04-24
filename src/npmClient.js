@@ -1,5 +1,6 @@
 var _ = require('lodash');
 var P = require('bluebird');
+var npm = require('npm');
 var RegClient = require('npm-registry-client');
 
 // map-to-registry contains logic for figuring out the correct 
@@ -38,7 +39,16 @@ module.exports = function createNpmClient(npmConfig) {
     });
   }
 
+  function publish(packageDir){
+    // pretty gross to be using `npm` directly, since it is a huge sprawling globalton
+    // with its own config which doesn't necessarily line up with 
+    // the `npmConfig` we were passed at construction time. Unfortunately most of its
+    // higher-level publish functionality is baked into that globalton. :(
+    return P.promisify(npm.commands.publish)( [packageDir] );
+  }
+
   return {
-    existingVersionsFor: existingVersionsFor
+    existingVersionsFor: existingVersionsFor,
+    publish: publish
   };
 };

@@ -1,9 +1,6 @@
 {
   "name": "autopublish",
-  "version": "0.0.3",
-	"testing": {
-	  "foo": "bar"
-	},
+  "version": "0.0.4-test2",
   "description": "Utilities for auto-publishing NPM modules as part of a CD pipeline",
   "main": "index.js",
   "scripts": {

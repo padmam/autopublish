@@ -4,9 +4,10 @@ var boot = require('./boot');
 
 npmlog.heading = 'autopublish';
 
-module.exports = function run(moduleDir) {
+module.exports = function run(packageDir) {
   return boot().then( function(deps) { 
-    var autoPublisher = createAutoPublisher(deps.client,moduleDir);
+    var npmClient = deps.client;
+    var autoPublisher = createAutoPublisher(npmClient,packageDir);
 
     npmlog.info('Package name: '+autoPublisher.packageName());
     npmlog.info('Local version: '+autoPublisher.localVersion());
@@ -14,9 +15,10 @@ module.exports = function run(moduleDir) {
       if (equivalentPublishedVersion) {
         npmlog.info('The registry already contains the equivalent version '+equivalentPublishedVersion);
         process.exit(0);
-      } else {
-        npmlog.info('This version has not been published to the registry');
       }
+
+      npmlog.info('This version has not been published to the registry. Publishing...');
+      npmClient.publish(packageDir);
     });
   })
 }
