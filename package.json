@@ -1,14 +1,17 @@
 {
   "name": "autopublish",
-  "version": "0.0.4-test2",
+  "version": "0.0.5",
   "description": "Utilities for auto-publishing NPM modules as part of a CD pipeline",
   "main": "index.js",
+	"bin": {
+	  "autopublish": "./bin/autopublish"
+	},
   "scripts": {
     "test:isolated": "mocha --no-colors -r test/init.js test/isolated/",
     "test:integrated": "mocha --no-colors -r test/init.js test/integrated/",
     "test:watch": "mocha  -r test/init.js test/isolated/ --watch"
   },
-  "author": "",
+  "author": "Pete Hodgson",
   "license": "UNLICENSED",
   "devDependencies": {
     "babel-cli": "^6.7.7",
