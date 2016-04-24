@@ -11,10 +11,10 @@ var mapToRegistry = require("npm/lib/utils/map-to-registry");
 mapToRegistry = P.promisify(mapToRegistry);
 
 function lookupUriAndAuth(npmConfig,packageName) {
-  return new Promise(function (resolve, reject) {
+  return new P(function (resolve, reject) {
     mapToRegistry(packageName, npmConfig, function cb(er,uri,auth) {
       if (er) return reject(er);
-      resolve({uri:uri,auth:auth});
+      resolve([uri,auth]);
     });
   });
 }
@@ -26,17 +26,15 @@ module.exports = function createNpmClient(npmConfig) {
   var clientGet = P.promisify(registry.get, {context:registry});
 
   function existingVersionsFor(packageName){
-    return lookupUriAndAuth(npmConfig,packageName).then( function (uriAndAuth){
-      var uri = uriAndAuth.uri;
-      var auth = uriAndAuth.auth;
+    return lookupUriAndAuth(npmConfig,packageName).spread( function (uri,auth){
       return clientGet(uri, {auth:auth});
     }).then(function (data) {
       return _.keys(data.versions);
     }).catch(function (err) {
       if( err.statusCode === 404 ) {
-        return Promise.reject('could not find the module: '+packageName);
+        return P.reject('could not find the module: '+packageName);
       }
-      return Promise.reject(err);
+      return P.reject(err);
     });
   }
 

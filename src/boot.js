@@ -12,7 +12,7 @@ module.exports = function boot() {
 }
 
 function loadNpm() {
-  return new Promise(function(resolve,reject) {
+  return new P(function(resolve,reject) {
     npm.load(function cb(err) {
       if (err) return reject(err);
       resolve(npm);
