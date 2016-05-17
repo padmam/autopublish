@@ -2,7 +2,9 @@
 set -eu
 
 if [ -z "${CI-}" ]; then
+  echo "setting up npm auth..."
   echo '//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}' >> "${HOME}/.npmrc"
+  cat "${HOME}/.npmrc"
 fi
 
 # Yo dawg, I heard you liked autopublish so I'm using autopublish to publish autopublish.
