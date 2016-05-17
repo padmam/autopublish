@@ -14,10 +14,11 @@ Pull requests welcome!
 
 Make sure tests pass before submitting your PR. `npm test` will run them. Note that there is a test for private module support which will only be run if you pass the name for a private package that the currently logged-in user has access to. You can run that test by specifying the module name via a `EXAMPLE_PRIVATE_PACKAGE` environment variable when running the tests, e.g. `EXAMPLE_PRIVATE_PACKAGE=our_private_package npm test`. If you don't specify an example private package then that test will be skipped.
 
-
-
-## Prior art
+# Prior art
 the ['publish'](https://www.npmjs.com/package/publish) module *almost* does what we want, but doesn't seem to support custom registries. It also has rather clunky support for npm auth (triggering an internal re-auth using credentials passed via environment variables, and only if a `TRAVIS` env var is also set).
 
-## License
+# License
 MIT
+
+# TODO
+- [ ] setup CI/CD pipeline (oh, how meta!)
