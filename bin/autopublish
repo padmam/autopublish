@@ -2,6 +2,18 @@
 var path = require('path');
 
 var relativeModuleDir = process.argv[2] || "."
+if (relativeModuleDir[0] === "-") {
+  printHelp();
+  process.exit(0);
+}
+
 var moduleDir = path.resolve(process.cwd(),relativeModuleDir);
 
 require('../src/cli.js')(moduleDir);
+
+function printHelp(){
+  console.log("A simple command-line tool to automagically publish an npm module to an npm registry when its version has changed.");
+  console.log("");
+  console.log("USAGE: autopublish [module_dir]");
+  console.log("if no module directory is specified the current directory is used");
+}
