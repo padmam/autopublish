@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eu
 
-if [ -z "${CI-}" ]; then
+if [ -n "${CI-}" ]; then
   echo "setting up npm auth..."
   echo '//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}' >> "${HOME}/.npmrc"
   cat "${HOME}/.npmrc"
