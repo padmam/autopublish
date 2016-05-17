@@ -2,20 +2,15 @@
   "name": "autopublish",
   "version": "0.0.5",
   "description": "Utilities for auto-publishing npm modules as part of a CD pipeline",
-  "main": "index.js",
 	"bin": {
 	  "autopublish": "./bin/autopublish"
 	},
   "scripts": {
-    "test:isolated": "mocha --no-colors -r test/init.js test/isolated/",
-    "test:integrated": "mocha --no-colors -r test/init.js test/integrated/",
-    "test:watch": "mocha  -r test/init.js test/isolated/ --watch"
+    "test": "mocha --no-colors -r test/init.js test/**/*.spec.js"
   },
-  "author": "Pete Hodgson",
+  "author": "Earnest, Inc",
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.7.7",
-    "babel-core": "^6.7.7",
     "chai": "^3.5.0",
     "chai-as-promised": "^5.3.0",
     "mocha": "^2.4.5",
