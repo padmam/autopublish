@@ -1,5 +1,9 @@
 #!/bin/bash
 set -eu
 
+if [ -z "${CI-}" ]; then
+  echo '//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}' >> "${HOME}/.npmrc"
+fi
+
 npm install autopublish
 node_modules/.bin/autopublish 
