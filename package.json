@@ -1,7 +1,7 @@
 {
   "name": "autopublish",
   "version": "0.0.5",
-  "description": "Utilities for auto-publishing NPM modules as part of a CD pipeline",
+  "description": "Utilities for auto-publishing npm modules as part of a CD pipeline",
   "main": "index.js",
 	"bin": {
 	  "autopublish": "./bin/autopublish"
