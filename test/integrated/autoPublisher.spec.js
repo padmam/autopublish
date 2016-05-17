@@ -26,19 +26,19 @@ describe('autoPublisher', function () {
     const fakeModuleDir = createFakeModuleDir({name:'cows',version:'16.6000.1513'});
     const autoPublisher = createAutoPublisher(client,fakeModuleDir);
 
-    expect(autoPublisher.checkForEquivVersion()).to.eventually.be.undefined;
+    return expect(autoPublisher.checkForEquivVersion()).to.eventually.be.undefined;
   });
 
   it('identifies that an existing version could not be published', function () {
     const fakeModuleDir = createFakeModuleDir({name:'cows',version:'1.1.0'});
     const autoPublisher = createAutoPublisher(client,fakeModuleDir);
-    expect(autoPublisher.checkForEquivVersion()).to.eventually.equal('1.1.0');
+    return expect(autoPublisher.checkForEquivVersion()).to.eventually.equal('1.1.0');
   });
 
   it('identifies that an existing version with a different build hash should not be published', function () {
     const fakeModuleDir = createFakeModuleDir({name:'cows',version:'1.1.0+build15'});
     const autoPublisher = createAutoPublisher(client,fakeModuleDir);
-    expect(autoPublisher.checkForEquivVersion()).to.eventually.equal('1.1.0');
+    return expect(autoPublisher.checkForEquivVersion()).to.eventually.equal('1.1.0');
   });
 
   it('throws if the module cannot be found', function () {
