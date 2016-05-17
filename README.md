@@ -17,7 +17,7 @@ Make sure tests pass before submitting your PR. `npm test` will run them. Note t
 
 
 ## Prior art
-['publish' module](https://www.npmjs.com/package/publish)
+the ['publish'](https://www.npmjs.com/package/publish) module *almost* does what we want, but doesn't seem to support custom registries. It also has rather clunky support for npm auth (triggering an internal re-auth using credentials passed via environment variables, and only if a `TRAVIS` env var is also set).
 
 ## License
 MIT
