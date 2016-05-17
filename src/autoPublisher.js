@@ -17,7 +17,7 @@ module.exports = function createAutoPublisher(client,moduleDir) {
 
   function checkForEquivVersion() {
     return client.existingVersionsFor(pkg.name).then(function (versions) {
-      return versions.find(function (version) {
+      return _.find( versions, function (version) {
         return semver.eq(version,pkg.version);
       });
     });
