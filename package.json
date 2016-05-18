@@ -23,5 +23,9 @@
     "npm-registry-client": "^7.1.0",
     "npmlog": "^2.0.3",
     "semver": "^5.1.0"
-  }
+  },
+  "files": [
+    "bin",
+    "src"
+  ]
 }
